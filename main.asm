@@ -29,6 +29,7 @@ comienzo_programa:
 ;---	                    P R E  -  B U C L E                         ---
 ;--------------------------------------------------------------------------
 pre_bucle:
+	call	sub_txt_zxpacman_padding
 	call	sub_txt_zxpacman
 	call	dibuja_jugador		;Dibuja el jugador
 
@@ -40,7 +41,7 @@ pre_bucle:
 bucle_principal:
 	call	dibuja_jugador			;Dibuja el jugador
 	call	dibuja_fantasma			;Dibuja el fantasma
-	call	dibuja_recuadro_inv		;Dibuja recuadro invisible
+	;call	dibuja_recuadro_inv		;Dibuja recuadro invisible
 
 	ld	a,(settings)
 	bit	0,a
@@ -91,8 +92,10 @@ rota_fantasma		defb	$00
 settings			defb	$00
 ; Bit 0 = 0/1 Fin recorrido OFF/ON
 
-txt_pulse_continuar	defb	_BRIGHT, $00, _FLASH, $00, _PAPER, $00, _INK, $05, _AT, $0f, $03, " Pulse Space para comenzar "
-txt_zxpacman		defb	_BRIGHT, $01, _FLASH, $00, _PAPER, $01, _INK, $06, _AT, $02, $07, " ZX  P A C M A N "
+txt_pulse_continuar	defb	_BRIGHT, $00, _FLASH, $00, _PAPER, $00, _INK, $05, _AT, $12, $03, " Pulse Space para comenzar "
+txt_zxpacman		defb	_BRIGHT, $01, _FLASH, $00, _PAPER, $02, _INK, $04, _AT, $03, $07, " ZX  P A C M A N "
+txt_zxpacman_padd	defb	_BRIGHT, $01, _FLASH, $00, _PAPER, $02, _INK, $04, _AT, $02, $07, "                 "
+txt_zxpacman_padd2	defb	_BRIGHT, $01, _FLASH, $00, _PAPER, $02, _INK, $04, _AT, $04, $07, "                 "
 
 ;==========================================================================
 include "rutaux.asm"

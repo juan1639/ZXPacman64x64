@@ -10,13 +10,18 @@ declarar_constantes:
 	FANTASMA_POS_X_INI		equ	$0a
 
 	JUGADOR_LIMITE_IZ	equ $00
-	JUGADOR_LIMITE_DE	equ $18
+	JUGADOR_LIMITE_DE	equ $0e
+
+	FANTASMA_LIMITE_IZ	equ $00
+	FANTASMA_LIMITE_DE	equ $18
 
 	RECUADRO_INV_POS_Y	equ $48
 	RECUADRO_INV_POS_X	equ $18
 	RECUADRO_INV_BYTES	equ $ff
 
 ;--------------------------------------------------------------------------
+	AZUL_OSCURO			equ	%00000001
+	AZULOSCURO_BRILLO	equ	%01000001
 	ROJO				equ	%00000010
 	ROJO_BRILLO			equ	%01000010
 	VERDE				equ	%00000100

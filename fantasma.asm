@@ -8,7 +8,7 @@ dibuja_fantasma:
     ld a,(fantasma_x)
     ld l,a
 
-    cp  JUGADOR_LIMITE_DE
+    cp  FANTASMA_LIMITE_DE
     ret z
 
     ;------------------------------------------------------
@@ -59,7 +59,7 @@ reset_rotacion_fantasma:
 ret
 
 ;=======================================================================
-;              D I B U J A   J U G A D O R   (S I N   O R)
+;              D I B U J A   F A N T A S M A   (S I N   O R)
 ;
 ;-----------------------------------------------------------------------
 bucle_dibuja_fantasma:
@@ -135,27 +135,82 @@ ret
 ;              A T T R   F A N T A S M A
 ;-----------------------------------------------------------------------
 attr_fantasma:
+    ld  a,(rota_fantasma)
+    cp  $03
+    call    z,attr_rota3
+
+    cp  $02
+    call    z,attr_rota2
+
+    cp  $01
+    call    z,attr_rota1
+
+    cp  $00
+    call    z,attr_rota0
+
+    ;---------------------------
     ld  b,$08
 
     bucle_attr_fantasma:
-        ld  (hl),ROJO
+        ld  a,(de)
+        ld  (hl),a
         inc l
-        ld  (hl),ROJO
+        inc de
+
+        ld  a,(de)
+        ld  (hl),a
         inc l
-        ld  (hl),ROJO
+        inc de
+
+        ld  a,(de)
+        ld  (hl),a
         inc l
-        ld  (hl),ROJO
+        inc de
+
+        ld  a,(de)
+        ld  (hl),a
         inc l
-        ld  (hl),ROJO
+        inc de
+
+        ld  a,(de)
+        ld  (hl),a
         inc l
-        ld  (hl),ROJO
+        inc de
+
+        ld  a,(de)
+        ld  (hl),a
         inc l
-        ld  (hl),ROJO
+        inc de
+
+        ld  a,(de)
+        ld  (hl),a
         inc l
-        ld  (hl),ROJO
+        inc de
+
+        ld  a,(de)
+        ld  (hl),a
 
         ld  a,l
         add a,$19
         ld  l,a
+
+        inc de
     djnz    bucle_attr_fantasma
+ret
+
+;----------------------------------------------------
+attr_rota0:
+    ld  de,fantasma_attr
+ret
+
+attr_rota1:
+    ld  de,fantasma_attr + 64
+ret
+
+attr_rota2:
+    ld  de,fantasma_attr2
+ret
+
+attr_rota3:
+    ld  de,fantasma_attr2 + 64
 ret

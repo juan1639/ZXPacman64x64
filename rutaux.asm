@@ -59,6 +59,21 @@ sub_txt_zxpacman:
 ret
 
 ;==========================================================================
+;		        SUB -  TEXTO ZX PACMAN - P A D D I N G S
+;--------------------------------------------------------------------------
+sub_txt_zxpacman_padding:
+	ld	de,txt_zxpacman_padd
+	ld	bc,$1c
+
+	call	pr_string
+
+	ld	de,txt_zxpacman_padd2
+	ld	bc,$1c
+
+	call	pr_string
+ret
+
+;==========================================================================
 ;		        SUB -  TEXTO PULSE CONTINUAR...
 ;--------------------------------------------------------------------------
 sub_txt_pulse_continuar:

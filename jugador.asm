@@ -131,37 +131,38 @@ bucle_dibuja_jugador:
         call cambio_scanline_linea
         inc de
     djnz bucle_dibuja_jugador
+
+    ld  h,$59
+    call    attr_jugador
 ret
 
 ;=======================================================================
 ;              A T T R   J U G A D O R
 ;-----------------------------------------------------------------------
 attr_jugador:
-    ld  (hl),AMARILLO_BRILLO
-    inc l
-    ld  (hl),AMARILLO_BRILLO
-    inc l
-    ld  (hl),AMARILLO_BRILLO
+    ld  b,$08
 
-    ld  a,l
-    add a,$20
-    ld  l,a
+    bucle_attr_jugador:
+        ld  (hl),AMARILLO
+        inc l
+        ld  (hl),AMARILLO
+        inc l
+        ld  (hl),AMARILLO
+        inc l
+        ld  (hl),AMARILLO
+        inc l
+        ld  (hl),AMARILLO
+        inc l
+        ld  (hl),AMARILLO
+        inc l
+        ld  (hl),AMARILLO
+        inc l
+        ld  (hl),AMARILLO
 
-    ld  (hl),AMARILLO_BRILLO
-    dec l
-    ld  (hl),AMARILLO_BRILLO
-    dec l
-    ld  (hl),AMARILLO_BRILLO
-
-    ld  a,l
-    add a,$20
-    ld  l,a
-
-    ld (hl),AMARILLO_BRILLO
-    inc l
-    ld (hl),AMARILLO_BRILLO
-    inc l
-    ld (hl),AMARILLO_BRILLO
+        ld  a,l
+        add a,$19
+        ld  l,a
+    djnz    bucle_attr_jugador
 ret
 
 ;=======================================================================
